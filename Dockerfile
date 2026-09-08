@@ -1,5 +1,5 @@
 # Stage 1: Build the application
-FROM gradle:8.5-jdk17 AS build
+FROM gradle:8.11-jdk17 AS build
 WORKDIR /app
 
 # Copy Gradle files
@@ -15,11 +15,8 @@ RUN gradle buildFatJar --no-daemon
 FROM eclipse-temurin:17-jre
 WORKDIR /app
 
-# Copy the built JAR from build stage
+# Copy the built JAR
 COPY --from=build /app/build/libs/*-all.jar app.jar
 
-# Expose port
 EXPOSE 8080
-
-# Run the application
 ENTRYPOINT ["java", "-jar", "app.jar"]
