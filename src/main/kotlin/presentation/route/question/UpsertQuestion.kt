@@ -11,7 +11,7 @@ import io.ktor.server.resources.post
 import io.ktor.server.response.*
 import io.ktor.server.routing.Route
 
-fun Route.upsertQuizQuestion(repository: QuestionRepo) {
+fun Route.upsertQuestion(repository: QuestionRepo) {
     post<QuestionRoutesPath.Upsert> {
         val question = call.receive<Question>()
         repository.upsertQuestion(question)

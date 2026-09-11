@@ -103,6 +103,17 @@ class QuestionRepoImpl(
         }
     }
 
+    override suspend fun insertAllQuestions(questions: List<Question>): Result<Unit, DataError> {
+        return try {
+            val questions = questions.map { it.toQuizQuestionEntity() }
+            questionCollection.insertMany(questions)
+            Result.Success(Unit)
+        } catch (e: Exception) {
+            e.printStackTrace()
+            Result.Failure(DataError.Database)
+        }
+    }
+
     override suspend fun deleteQuestionById(id: String?): Result<Unit, DataError> {
         if (id.isNullOrEmpty()) {
             return Result.Failure(DataError.Validation)

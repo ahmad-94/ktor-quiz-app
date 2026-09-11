@@ -17,4 +17,9 @@ class QuestionRoutesPath(
     data class Upsert(
         val parent: QuestionRoutesPath = QuestionRoutesPath(),
     )
+
+    @Resource("/insertAllQuestions")
+    data class InsertAllQuestions(
+        val parent: QuestionRoutesPath = QuestionRoutesPath(),
+    )
 }

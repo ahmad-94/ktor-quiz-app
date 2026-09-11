@@ -8,8 +8,9 @@ import com.example.presentation.route.issue.getIssues
 import com.example.presentation.route.issue.insertIssue
 import com.example.presentation.route.question.getAllQuizQuestions
 import com.example.presentation.route.question.getQuestionById
+import com.example.presentation.route.question.insertAllQuestions
 import com.example.presentation.route.question.quizQuestionById
-import com.example.presentation.route.question.upsertQuizQuestion
+import com.example.presentation.route.question.upsertQuestion
 import com.example.presentation.route.root
 import com.example.presentation.route.topic.deleteTopicById
 import com.example.presentation.route.topic.getAllTopics
@@ -33,7 +34,8 @@ fun Application.configureRouting() {
 
         // Questions
         getAllQuizQuestions(questionRepository)
-        upsertQuizQuestion(questionRepository)
+        upsertQuestion(questionRepository)
+        insertAllQuestions(questionRepository)
         getQuestionById(questionRepository)
         quizQuestionById(questionRepository)
 
