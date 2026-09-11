@@ -20,7 +20,7 @@ class QuestionRepoImpl(
      mongoDatabase: MongoDatabase
 ): QuestionRepo {
 
-    val questionCollection = mongoDatabase.getCollection<QuestionEntity>(Constants.QUIZ_COLLECTION)
+    val questionCollection = mongoDatabase.getCollection<QuestionEntity>(Constants.QUESTION_COLLECTION)
 
     override suspend fun getAllQuestions(
         topicCode: Int?,
